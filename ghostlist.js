@@ -1,17 +1,17 @@
 var ghostlist = {
-	var els = [],
+	els = [],
 
-	var $ifr = $("#ghostlist").contents().find("body"),
+	$ifr = $("#ghostlist").contents().find("body"),
 
-	var $container = jQuery(".wrapper"),
+	$container = jQuery(".wrapper"),
 
-	var addItem = function(el){
+	addItem = function(el){
 		var top = parseInt(el.style.top.replace("px", ""));
 		var bottom = parseInt(el.offsetHeight) + top;
 		this.els.push({id: el.id, top: top, bottom: bottom, shown: true});
-	}
+	},
 
-	var bindScroll = function(){
+	bindScroll = function(){
 		$(window).scroll(function(){
 			var scrollTop = jQuery(window).scrollTop();
 			var bottom = scrollTop + jQuery(window).height();
@@ -19,7 +19,7 @@ var ghostlist = {
 		});
 	},
 
-	var checkView = function(top, bottom){
+	checkView = function(top, bottom){
 		for(var i = 0; i < this.els.length; i++){
 			var el = this.els[i];
 			if(el.top > top - 250 && el.bottom < bottom + 250){
